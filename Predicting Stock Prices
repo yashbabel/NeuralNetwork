@@ -73,6 +73,15 @@ X_test= np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
+#predicting for a single day
+X_test_check=[]
+X_test_check.append(inputs[len(inputs)-100:len(inputs),0])
+X_test_check = np.array(X_test_check)
+X_test_check= np.reshape(X_test_check, (X_test_check.shape[0], X_test_check.shape[1], 1))
+predicted_stock_price_check = regressor.predict(X_test_check)
+predicted_stock_price_check = sc.inverse_transform(predicted_stock_price_check)
+
+
 plt.plot(real_stock_price, color = 'red', label = 'Real Google Stock Price')
 plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted Google Stock Price')
 plt.title('Google Stock Price Prediction')
